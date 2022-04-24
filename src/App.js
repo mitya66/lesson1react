@@ -1,22 +1,28 @@
-import './App.scss';
-import Example from './Examle';
-import AFew from './AFew';
-import Message from './Message';
+import "./App.scss";
+import Router from "./pages/Router";
+import React, { useState } from "react";
 
-function App(props) {
-  const isPurple = `App-header ${props.showPurple ? 'header-purple' : 'header-gold'}`;
+export const MyThemeContext = React.createContext({ theme: 'dark' })
+function App() {
+  const [theme, setTheme] = useState('state')
+
+  const handleInput = (event) => {  //не могу понять что не так
+    setValue(event.target.value);
+   };
+
+
   return (
-    <div 
-     className="App"
-     style={{ top : props.TopPosition || '20px', position: 'relative' }}>
-      <header 
-      className=  {isPurple}>
-        Hello, {props.name}
-        <Example/>
-        <AFew/>
-
-        <Message text={'Hello'}/>
-  
+    <div className={"App"}>
+      <header className="App-header">
+        <MyThemeContext.Provider value={ {theme: theme, setTheme: setTheme} }>
+        <Router />
+        </MyThemeContext.Provider>
+        <input
+            placeholder={"Введите сообщение"}
+            value={value}
+            onChange={handleInput}
+          />
+          <button onClick={hendleClick}>Добавить сообщение</button>
       </header>
     </div>
   );
