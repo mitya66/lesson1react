@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  padding-top: 25px;
 }
 
 .App-logo {
@@ -39,10 +38,28 @@
 }
 
 
-.header-purple{
-  background-color: purple;
+.controlPanel {
+  display: flex;
 }
 
-.header-gold{
-  background-color: gold;
+.menu {
+display: flex;
+ li{
+  list-style: none;
+  margin: 0 20px;
+   a {
+     color: #61dafb;
+     text-decoration: none;
+   }
+ }
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrap{
+  display: block;
+  border: 1px solid wheat;
+  border-radius: 5px
 }
