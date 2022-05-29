@@ -1,22 +1,24 @@
 import './App.scss';
-import Example from './Examle';
-import AFew from './AFew';
-import Message from './Message';
+import Router from './pages/Router';
+import React, { useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './hooks.js/AuthProvider';
 
-function App(props) {
-  const isPurple = `App-header ${props.showPurple ? 'header-purple' : 'header-gold'}`;
+export const MyThemeContext = React.createContext({ theme: 'dark'});
+
+
+function App() {
+ const [theme, setTheme] = useState('dark');
+
+
   return (
-    <div 
-     className="App"
-     style={{ top : props.TopPosition || '20px', position: 'relative' }}>
-      <header 
-      className=  {isPurple}>
-        Hello, {props.name}
-        <Example/>
-        <AFew/>
-
-        <Message text={'Hello'}/>
-  
+    <div className="App">
+      <header className='App-header'>
+        <MyThemeContext.Provider value={{theme: theme, setTheme: setTheme }}>
+        <AuthProvider>
+        <Router />
+        </AuthProvider>
+        </MyThemeContext.Provider>
       </header>
     </div>
   );
